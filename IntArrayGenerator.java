@@ -1,3 +1,5 @@
+package exp01;
+
 import java.util.Random;
 
 public class IntArrayGenerator{
