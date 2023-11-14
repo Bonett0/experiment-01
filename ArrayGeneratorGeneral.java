@@ -9,32 +9,60 @@ public class ArrayGeneratorGeneral {
     public static void main(String[] args) {
         int dimension = 10;
 
-        // Test random int array
-        testArray("int", "random", dimension);
+        System.out.println("\nFor int arrays:");
+        testing("int", dimension);
+        System.out.println("\n");
 
-        // Test sorted String array
-        testArray("String", "sorted", dimension);
+        System.out.println("For String arrays:");
+        testing("String", dimension);
+        System.out.println("\n");
 
-        // Test partially sorted double array
-        testArray("double", "partSorted", dimension);
+        System.out.println("For double arrays:");
+        testing("double", dimension);
+        System.out.println("\n");
 
-        // Test reverse float array
-        testArray("float", "reverse", dimension);
+        System.out.println("For float arrays:");
+        testing("float", dimension);
+        System.out.println("\n");
 
-        // Test array with duplicates char array
-        testArray("char", "duplicates", dimension);
+        System.out.println("For char arrays:");
+        testing("char", dimension);
+        System.out.println("\n");
 
-        // Test array without duplicates Integer array
-        testArray("Integer", "noDuplicates", dimension);
+        System.out.println("For Integer arrays:");
+        testing("Integer", dimension);
+        System.out.println("\n");
 
-        // Test equal byte array
-        testArray("byte", "equal", dimension);
-      
+        System.out.println("For byte arrays:");
+        testing("byte", dimension);
+        System.out.println("\n");
     }
 
-    public static void testArray(String type, String typeOfTheArray, int dimension) {
-        Object result = arrayGeneratorGeneral(type, dimension, typeOfTheArray);
-        System.out.print(typeOfTheArray + " " + type + " array:");
+    public static void testing(String type, int dimension) {
+        testArray(type, "random", dimension);
+
+        // Test sorted type array
+        testArray(type, "sorted", dimension);
+
+        // Test partially sorted type array
+        testArray(type, "partiallySorted", dimension);
+
+        // Test reverse sorted type array
+        testArray(type, "reverse", dimension);
+
+        // Test type array with duplicates
+        testArray(type, "duplicates", dimension);
+
+        // Test type array without duplicates
+        testArray(type, "noDuplicates", dimension);
+
+        // Test equal type array
+        testArray(type, "equal", dimension);
+    }
+
+    public static void testArray(String type, String natureChoice, int dimension) {
+        Object result = arrayGeneratorGeneral(type, dimension, natureChoice);
+        System.out.print(natureChoice + " " + type + " array:");
         
         // Check the type of the result and print accordingly
         if (result instanceof int[]) {
@@ -53,6 +81,27 @@ public class ArrayGeneratorGeneral {
             System.out.println(Arrays.toString((byte[]) result));
         } else {
             System.out.println("Unsupported array type");
+        }
+    }
+
+    private static int getNatureChoice(String natureChoice) {
+        switch (natureChoice) {
+            case "random":
+                return 1;
+            case "sorted":
+                return 2;
+            case "partiallySorted":
+                return 3;
+            case "reverse":
+                return 4;
+            case "duplicates":
+                return 5;
+            case "noDuplicates":
+                return 6;
+            case "equal":
+                return 7;
+            default:
+                throw new IllegalArgumentException("Invalid natureChoice: " + natureChoice);
         }
     }
 
