@@ -41,14 +41,6 @@ public class CharArrayGenerator {
         return array;
     }
 
-    private static char[] generateReverseSortedCharArray(int length) {
-        char[] array = new char[length];
-        for (int i = 0; i < length; i++) {
-            array[i] = (char) ('a' + length - i - 1); // Generating characters in reverse order
-        }
-        return array;
-    }
-
     private static char[] generatePartiallySortedCharArray(int length) {
         char[] array = new char[length];
         for (int i = 0; i < length; i++) {
@@ -66,6 +58,39 @@ public class CharArrayGenerator {
         }
 
         return array;
+    }
+
+    private static char[] generateReverseSortedCharArray(int length) {
+        char[] array = new char[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = (char) ('a' + length - i - 1); // Generating characters in reverse order
+        }
+        return array;
+    }
+
+    private static char[] generateRandomCharArrayWithDuplicates(int length) {
+        char[] array = new char[length];
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            array[i] = generateRandomChar(random);
+        }
+        return array;
+    }
+
+    private static char[] generateRandomCharArrayWithoutDuplicates(int length) {
+        char[] array = new char[length];
+        Random random = new Random();
+        char[] characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+
+        for (int i = 0; i < length; i++) {
+            array[i] = characters[random.nextInt(characters.length)];
+        }
+
+        return array;
+    }
+
+    private static char[] generateEqualCharArray(int length) {
+        return generateEqualCharArray(length, 'a');
     }
 
     private static char[] generateEqualCharArray(int length, char value) {

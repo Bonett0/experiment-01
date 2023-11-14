@@ -2,54 +2,65 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ArrayGenerator {
+public class ArrayGeneratorGeneral {
 
     public static void main(String[] args) {
       
     }
 
-    public static Object[] ArrayGeneratorGeneral(string type, int dimension, string typeOfTheArray){
+    public static Object arrayGeneratorGeneral(String type, int dimension, String typeOfTheArray){
         int choice = 0;
-        switch(typeOfTheArray) {
-            case 'random':
+        switch (typeOfTheArray) {
+            case "random":
                 choice = 1;
                 break;
-            case 'sorted':
+            case "sorted":
                 choice = 2;
                 break;
-            case 'partSorted'
+            case "partSorted":
                 choice = 3;
                 break;
-            case 'reverse':
+            case "reverse":
                 choice = 4;
                 break;
-            case 'duplicates':
+            case "duplicates":
                 choice = 5;
                 break;
-            case 'noDuplicates':
+            case "noDuplicates":
                 choice = 6;
                 break;
-            case 'equal':
+            case "equal":
                 choice = 7;
                 break;
         }
 
+        Object result = null;
 
-        switch(type) {
-            case 'int':
-
-            case 'String':
-
-            case 'double':
-
-            case 'float':
-
-            case 'char':
-
-            case 'Integer':
-
-            case 'byte'
+        switch (type) {
+            case "int":
+                result = IntArrayGenerator.intArrayGenerator(dimension, choice);
+                break;
+            case "String":
+                result = StringArrayGenerator.stringArrayGenerator(dimension, choice);
+                break;
+            case "double":
+                result = DoubleArrayGenerator.doubleArrayGenerator(dimension, choice);
+                break;
+            case "float":
+                result = FloatArrayGenerator.floatArrayGenerator(dimension, choice);
+                break;
+            case "char":
+                result = CharArrayGenerator.charArrayGenerator(dimension, choice);
+                break;
+            case "Integer":
+                result = IntegerArrayGenerator.intArrayGenerator(dimension, choice);
+                break;
+            case "byte":
+                result = ByteArrayGenerator.byteArrayGenerator(dimension, choice);
+                break;
         }
+
+        return result;
     }
     // Generate a random string array
    

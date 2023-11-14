@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class StringArrayGenerator{
 
     public static void main(String[] args) {
@@ -22,12 +24,44 @@ public class StringArrayGenerator{
         }
         return null;
     }
+
+    // Helper method to generate a random string
+    private static String generateRandomString(Random random, int length) {
+        String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            int randomIndex = random.nextInt(characters.length());
+            sb.append(characters.charAt(randomIndex));
+        }
+        return sb.toString();
+    }
+
      private static String[] generateRandomStringArray(int length) {
         String[] array = new String[length];
         Random random = new Random();
         for (int i = 0; i < length; i++) {
             array[i] = generateRandomString(random, 5); // Adjust the string generation as needed
         }
+        return array;
+    }
+
+    // Generate a partially sorted string array
+    private static String[] generatePartiallySortedStringArray(int length) {
+        String[] array = new String[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = "String" + i;
+        }
+
+        // Shuffle a portion of the array to make it partially sorted
+        Random random = new Random();
+        for (int i = 0; i < length / 3; i++) {
+            int index1 = random.nextInt(length);
+            int index2 = random.nextInt(length);
+            String temp = array[index1];
+            array[index1] = array[index2];
+            array[index2] = temp;
+        }
+
         return array;
     }
 
@@ -49,38 +83,35 @@ public class StringArrayGenerator{
         return array;
     }
 
-    // Helper method to generate a random string
-    private static String generateRandomString(Random random, int length) {
-        String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        StringBuilder sb = new StringBuilder(length);
+    private static String[] generateRandomStringArrayWithDuplicates(int length) {
+        String[] array = new String[length];
+        Random random = new Random();
         for (int i = 0; i < length; i++) {
-            int randomIndex = random.nextInt(characters.length());
-            sb.append(characters.charAt(randomIndex));
+            array[i] = generateRandomString(random, 5); // Adjust the string generation as needed
         }
-        return sb.toString();
+        return array;
     }
 
-
-    // Generate a partially sorted string array
-    private static String[] generatePartiallySortedStringArray(int length) {
+    private static String[] generateRandomStringArrayWithoutDuplicates(int length) {
         String[] array = new String[length];
         for (int i = 0; i < length; i++) {
             array[i] = "String" + i;
         }
-
-        // Shuffle a portion of the array to make it partially sorted
-        Random random = new Random();
-        for (int i = 0; i < length / 3; i++) {
-            int index1 = random.nextInt(length);
-            int index2 = random.nextInt(length);
-            String temp = array[index1];
-            array[index1] = array[index2];
-            array[index2] = temp;
-        }
-
+        shuffleArray(array);
         return array;
     }
-    private static int[] generateEqualStringArray(int length) {
+
+    private static void shuffleArray(String[] array) {
+        Random random = new Random();
+        for (int i = array.length - 1; i > 0; i--) {
+            int index = random.nextInt(i + 1);
+            String temp = array[index];
+            array[index] = array[i];
+            array[i] = temp;
+        }
+    }
+
+    private static String[] generateEqualStringArray(int length) {
         String[] array = new String[length];
         for (int i = 0; i < length; i++) {
             array[i] = "String";

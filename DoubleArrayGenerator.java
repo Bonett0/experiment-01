@@ -46,14 +46,6 @@ public class DoubleArrayGenerator {
         return array;
     }
 
-    private static double[] generateReverseSortedDoubleArray(int length) {
-        double[] array = new double[length];
-        for (int i = 0; i < length; i++) {
-            array[i] = (double) (length - i - 1); // Generating doubles in reverse order
-        }
-        return array;
-    }
-
     private static double[] generatePartiallySortedDoubleArray(int length) {
         double[] array = new double[length];
         for (int i = 0; i < length; i++) {
@@ -72,6 +64,37 @@ public class DoubleArrayGenerator {
 
         return array;
     }
+
+    private static double[] generateReverseSortedDoubleArray(int length) {
+        double[] array = new double[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = (double) (length - i - 1); // Generating doubles in reverse order
+        }
+        return array;
+    }
+
+    private static double[] generateRandomDoubleArrayWithDuplicates(int length) {
+        double[] array = new double[length];
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            array[i] = random.nextDouble(); // Generates a random double between 0.0 (inclusive) and 1.0 (exclusive)
+        }
+        return array;
+    }
+
+    private static double[] generateRandomDoubleArrayWithoutDuplicates(int length) {
+        double[] array = new double[length];
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            array[i] = random.nextDouble() * 10; // Adjust the range as needed
+        }
+        return array;
+    }
+
+    private static double[] generateEqualDoubleArray(int length) {
+        return generateEqualDoubleArray(length, 1.0);
+    }
+
 
     private static double[] generateEqualDoubleArray(int length, double value) {
         double[] array = new double[length];
