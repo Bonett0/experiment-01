@@ -1,7 +1,3 @@
-import java.text.ParseException;
-
-import org.xml.sax.helpers.ParserAdapter;
-
 import java.util.Arrays;
 
 public class ArrayGeneratorGeneral {
@@ -81,27 +77,6 @@ public class ArrayGeneratorGeneral {
             System.out.println(Arrays.toString((byte[]) result));
         } else {
             System.out.println("Unsupported array type");
-        }
-    }
-
-    private static int getNatureChoice(String natureChoice) {
-        switch (natureChoice) {
-            case "random":
-                return 1;
-            case "sorted":
-                return 2;
-            case "partiallySorted":
-                return 3;
-            case "reverse":
-                return 4;
-            case "duplicates":
-                return 5;
-            case "noDuplicates":
-                return 6;
-            case "equal":
-                return 7;
-            default:
-                throw new IllegalArgumentException("Invalid natureChoice: " + natureChoice);
         }
     }
 
