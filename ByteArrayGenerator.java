@@ -16,6 +16,10 @@ public class ByteArrayGenerator{
             case 4:
                 return generateReverseSortedByteArray(dimension);
             case 5:
+                return generateRandomByteArrayWithDuplicates(dimension);
+            case 6:
+                return generateRandomByteArrayWithoutDuplicates(dimension);
+            case 7:
                 return generateEqualByteArray(dimension, (byte) 0);
         }
         return null;
@@ -60,6 +64,36 @@ public class ByteArrayGenerator{
         }
 
         return array;
+    }
+
+    private static byte[] generateRandomByteArrayWithDuplicates(int length) {
+        byte[] array = new byte[length];
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            array[i] = (byte) random.nextInt(10); // Adjust the range as needed
+        }
+        return array;
+    }
+
+    private static byte[] generateRandomByteArrayWithoutDuplicates(int length) {
+        byte[] array = new byte[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = (byte) i;
+        }
+        shuffleArray(array);
+        return array;
+    }
+
+    private static void shuffleArray(byte[] array) {
+        int index;
+        byte temp;
+        Random random = new Random();
+        for (int i = array.length - 1; i > 0; i--) {
+            index = random.nextInt(i + 1);
+            temp = array[index];
+            array[index] = array[i];
+            array[i] = temp;
+        }
     }
 
     private static byte[] generateEqualByteArray(int length, byte value) {

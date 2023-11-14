@@ -41,7 +41,7 @@ public class ArrayGeneratorGeneral {
         testArray(type, "sorted", dimension);
 
         // Test partially sorted type array
-        testArray(type, "partiallySorted", dimension);
+        testArray(type, "partSorted", dimension);
 
         // Test reverse sorted type array
         testArray(type, "reverse", dimension);
