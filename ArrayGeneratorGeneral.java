@@ -1,130 +1,99 @@
-import java.util.Arrays;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 
-public class ArrayGeneratorGeneral<T extends Comparable<T>> {
+public class ArrayGeneratorGeneral {
 
     public static void main(String[] args) {
-        int dimension = 10;
-        String type = "int";
-        String natureChoice = "random";
-        
+        int dimension = 1000;
+
         BubbleSortPassPerItem bubbleSortPassPerItem = new BubbleSortPassPerItem();
-        BubbleSortWhileNeeded bubbleSortWhileNeeded = new BubbleSortWhileNeeded();
         BubbleSortUntilNoChange bubbleSortUntilNoChange = new BubbleSortUntilNoChange();
-
-
-        Integer[] array = arrayGeneratorGeneral(type, dimension, natureChoice);
+        BubbleSortWhileNeeded bubbleSortWhileNeeded = new BubbleSortWhileNeeded();   
         
-        // loopare 125 volte e 25 volte escludere pre warm up - tre sorting algorithm
-            for (int i = 0; i < 1 ; i++) {
-                test_algorithm(bubbleSortPassPerItem, array, "BubbleSortPassPerItem", natureChoice);
+        //FOR INT
+        int[] intArray = (int[]) arrayGeneratorGeneral("int", dimension, "equal");
+        // Convert int[] to Integer[]
+        Integer[] integerArray = Arrays.stream(intArray).boxed().toArray(Integer[]::new);
 
-            }
-        // mettere risultati su csv escudendo i primi 25
+        //FOR INTEGER
+        // Integer[] integerArray2 = (Integer[]) arrayGeneratorGeneral("Integer", dimension, "random");
+
+        int counter = 0;
+        // loop 125 times + 25 warm-up times 
+        for (int i = 0; i < 150; i++) {
+            //int 
+            analyzeSortingPerformance(bubbleSortPassPerItem, integerArray, "bubbleSortPassPerItem", "int", "random", i);
+            analyzeSortingPerformance(bubbleSortPassPerItem, integerArray, "bubbleSortPassPerItem", "int", "sorted", i);
+            analyzeSortingPerformance(bubbleSortPassPerItem, integerArray, "bubbleSortPassPerItem", "int", "partSorted", i);
+            analyzeSortingPerformance(bubbleSortPassPerItem, integerArray, "bubbleSortPassPerItem", "int", "reverse", i);
+            analyzeSortingPerformance(bubbleSortPassPerItem, integerArray, "bubbleSortPassPerItem", "int", "duplicates", i);
+            analyzeSortingPerformance(bubbleSortPassPerItem, integerArray, "bubbleSortPassPerItem", "int", "noDuplicates", i);
+            analyzeSortingPerformance(bubbleSortPassPerItem, integerArray, "bubbleSortPassPerItem", "int", "equal", i);
+        }
+
+        for (int i = 0; i < 150; i++) {
+            //int
+            analyzeSortingPerformance(bubbleSortUntilNoChange, integerArray, "BubbleSortUntilNoChange", "int", "random", i);
+            analyzeSortingPerformance(bubbleSortUntilNoChange, integerArray, "BubbleSortUntilNoChange", "int", "sorted", i);
+            analyzeSortingPerformance(bubbleSortUntilNoChange, integerArray, "BubbleSortUntilNoChange", "int", "partSorted", i);
+            analyzeSortingPerformance(bubbleSortUntilNoChange, integerArray, "BubbleSortUntilNoChange", "int", "reverse", i);
+            analyzeSortingPerformance(bubbleSortUntilNoChange, integerArray, "BubbleSortUntilNoChange", "int", "duplicates", i);
+            analyzeSortingPerformance(bubbleSortUntilNoChange, integerArray, "BubbleSortUntilNoChange", "int", "noDuplicates", i);
+            analyzeSortingPerformance(bubbleSortUntilNoChange, integerArray, "BubbleSortUntilNoChange", "int", "equal", i);
+        }
+
+        for (int i = 0; i < 150; i++) {
+            //int
+            analyzeSortingPerformance(bubbleSortWhileNeeded, integerArray, "BubbleSortWhileNeeded", "int", "random", i);
+            analyzeSortingPerformance(bubbleSortWhileNeeded, integerArray, "BubbleSortWhileNeeded", "int", "sorted", i);
+            analyzeSortingPerformance(bubbleSortWhileNeeded, integerArray, "BubbleSortWhileNeeded", "int", "partSorted", i);
+            analyzeSortingPerformance(bubbleSortWhileNeeded, integerArray, "BubbleSortWhileNeeded", "int", "reverse", i);
+            analyzeSortingPerformance(bubbleSortWhileNeeded, integerArray, "BubbleSortWhileNeeded", "int", "duplicates", i);
+            analyzeSortingPerformance(bubbleSortWhileNeeded, integerArray, "BubbleSortWhileNeeded", "int", "noDuplicates", i);
+            analyzeSortingPerformance(bubbleSortWhileNeeded, integerArray, "BubbleSortWhileNeeded", "int", "equal", i);
+        }
+
+        // for (int i = 0; i < 150; i++) {
+        //     //Integer
+        //     analyzeSortingPerformance(bubbleSortPassPerItem, integerArray2, "BubbleSortPassPerItem", "Integer", "random");
+        //     analyzeSortingPerformance(bubbleSortUntilNoChange, integerArray2, "BubbleSortUntilNoChange", "Integer", "random");
+        //     analyzeSortingPerformance(bubbleSortWhileNeeded, integerArray2, "BubbleSortWhileNeeded", "Integer", "random");
+        // }  
     }
 
-    public void test_algorithm(Sorter<T> f, T[] items, String name_function,String natureChoice){
-        double start_time = System.nanoTime();
-        f.sort(items);
-        double end_time = System.nanoTime();
-        double difference = (end_time - start_time);
-
-        String csvFilePath = "./data/"+ name_function +"."+items.getClass().getSimpleName()+"."+ natureChoice+".csv";
-
-
-        String[] result = {name_function, String.valueOf(start_time), String.valueOf(end_time), String.valueOf(difference), items.getClass().getSimpleName()};
+    public static <T extends Comparable<T>> void analyzeSortingPerformance(Sorter<T> sorter, T[] array, String funcName, String type, String typeOfTheArray, int counter) {
+        long startTime = System.nanoTime();
+        sorter.sort(array);
+        long endTime = System.nanoTime();
+        long executionTime = endTime - startTime;
         
-        StringBuilder csvData = new StringBuilder();
-        csvData.append(String.join(",", result)).append("\n"); 
-        
-        try (FileWriter fileWriter = new FileWriter(csvFilePath)) {
-            fileWriter.write(csvData.toString());
+        if (counter >= 25) {
+            writeResultToCSV(funcName, type, typeOfTheArray, startTime, endTime, executionTime);
+        }
+    }
 
-            System.out.println("Data has been written to " + csvFilePath);
+    public static void writeResultToCSV(String funcName, String type, String typeOfTheArray, long startTime, long endTime, long executionTime) {
+        String csvFilename = "result.csv";
+        try (FileWriter writer = new FileWriter(csvFilename, true)) {
+            writer.append(funcName)
+                    .append(", ")
+                    .append(type)
+                    .append(", ")
+                    .append(typeOfTheArray)
+                    .append(", ")
+                    .append(String.valueOf(startTime))
+                    .append(", ")
+                    .append(String.valueOf(endTime))
+                    .append(", ")
+                    .append(String.valueOf(executionTime))
+                    .append("\n");                    
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-    // public static void tmp() {
-        
-    //     System.out.println("\nFor int arrays:");
-    //     testing("int", dimension);
-    //     System.out.println("\n");
 
-    //     System.out.println("For String arrays:");
-    //     testing("String", dimension);
-    //     System.out.println("\n");
-
-    //     System.out.println("For double arrays:");
-    //     testing("double", dimension);
-    //     System.out.println("\n");
-
-    //     System.out.println("For float arrays:");
-    //     testing("float", dimension);
-    //     System.out.println("\n");
-
-    //     System.out.println("For char arrays:");
-    //     testing("char", dimension);
-    //     System.out.println("\n");
-
-    //     System.out.println("For Integer arrays:");
-    //     testing("Integer", dimension);
-    //     System.out.println("\n");
-
-    //     System.out.println("For byte arrays:");
-    //     testing("byte", dimension);
-    //     System.out.println("\n");
-    // }
-
-    // public static void testing(String type, int dimension) {
-    //     testArray(type, "random", dimension);
-
-    //     // Test sorted type array
-    //     testArray(type, "sorted", dimension);
-
-    //     // Test partially sorted type array
-    //     testArray(type, "partSorted", dimension);
-
-    //     // Test reverse sorted type array
-    //     testArray(type, "reverse", dimension);
-
-    //     // Test type array with duplicates
-    //     testArray(type, "duplicates", dimension);
-
-    //     // Test type array without duplicates
-    //     testArray(type, "noDuplicates", dimension);
-
-    //     // Test equal type array
-    //     testArray(type, "equal", dimension);
-    // }
-
-    // public static void testArray(String type, String natureChoice, int dimension) {
-    //     Object result = arrayGeneratorGeneral(type, dimension, natureChoice);
-    //     System.out.print(natureChoice + " " + type + " array:");
-        
-    //     // Check the type of the result and print accordingly
-    //     if (result instanceof int[]) {
-    //         System.out.println(Arrays.toString((int[]) result));
-    //     } else if (result instanceof String[]) {
-    //         System.out.println(Arrays.toString((String[]) result));
-    //     } else if (result instanceof double[]) {
-    //         System.out.println(Arrays.toString((double[]) result));
-    //     } else if (result instanceof float[]) {
-    //         System.out.println(Arrays.toString((float[]) result));
-    //     } else if (result instanceof char[]) {
-    //         System.out.println(Arrays.toString((char[]) result));
-    //     } else if (result instanceof Integer[]) {
-    //         System.out.println(Arrays.toString((Integer[]) result));
-    //     } else if (result instanceof byte[]) {
-    //         System.out.println(Arrays.toString((byte[]) result));
-    //     } else {
-    //         System.out.println("Unsupported array type");
-    //     }
-    // }
-    @SuppressWarnings("unchecked")
-    public static <T extends Comparable<T>> T[] arrayGeneratorGeneral(String type, int dimension, String typeOfTheArray){
+    public static Object arrayGeneratorGeneral(String type, int dimension, String typeOfTheArray){
         int choice = 0;
         switch (typeOfTheArray) {
             case "random":
@@ -150,32 +119,32 @@ public class ArrayGeneratorGeneral<T extends Comparable<T>> {
                 break;
         }
 
+        Object result = null;
+
         switch (type) {
-        case "int":
-            int[] intArray = IntArrayGenerator.intArrayGenerator(dimension, choice);
-            Integer[] boxedIntArray = Arrays.stream(intArray).boxed().toArray(Integer[]::new);
-            return (T[]) boxedIntArray;
-        case "String":
-            return (T[]) StringArrayGenerator.stringArrayGenerator(dimension, choice);
-        case "double":
-            double[] doubleArray = DoubleArrayGenerator.doubleArrayGenerator(dimension, choice);
-            Double[] boxedDoubleArray = Arrays.stream(doubleArray).boxed().toArray(Double[]::new);
-            return (T[]) boxedDoubleArray;
-        case "float":
-            float[] floatArray = FloatArrayGenerator.floatArrayGenerator(dimension, choice);
-            Float[] boxedFloatArray = Arrays.stream(floatArray).boxed().toArray(Float[]::new);
-            return (T[]) boxedFloatArray;
-        case "char":
-            char[] charArray = CharArrayGenerator.charArrayGenerator(dimension, choice);
-            Character[] boxedCharArray = Arrays.stream(charArray).boxed().toArray(Character[]::new);
-            return (T[]) boxedCharArray;
-        case "Integer":
-            return (T[]) IntegerArrayGenerator.intArrayGenerator(dimension, choice);
-        case "byte":
-            return (T[]) ByteArrayGenerator.byteArrayGenerator(dimension, choice);
-        default:
-            throw new IllegalArgumentException("Unsupported type: " + type);
-    }
-        return null;
+            case "int":
+                result = IntArrayGenerator.intArrayGenerator(dimension, choice);
+                break;
+            case "String":
+                result = StringArrayGenerator.stringArrayGenerator(dimension, choice);
+                break;
+            case "double":
+                result = DoubleArrayGenerator.doubleArrayGenerator(dimension, choice);
+                break;
+            case "float":
+                result = FloatArrayGenerator.floatArrayGenerator(dimension, choice);
+                break;
+            case "char":
+                result = CharArrayGenerator.charArrayGenerator(dimension, choice);
+                break;
+            case "Integer":
+                result = IntegerArrayGenerator.intArrayGenerator(dimension, choice);
+                break;
+            case "byte":
+                result = ByteArrayGenerator.byteArrayGenerator(dimension, choice);
+                break;
+        }
+
+        return result;
     }   
 }
