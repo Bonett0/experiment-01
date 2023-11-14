@@ -1,7 +1,3 @@
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
-
 public class ArrayGeneratorGeneral {
 
     public static void main(String[] args) {
@@ -61,7 +57,5 @@ public class ArrayGeneratorGeneral {
         }
 
         return result;
-    }
-    // Generate a random string array
-   
+    }   
 }

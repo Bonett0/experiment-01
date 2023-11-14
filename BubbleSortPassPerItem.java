@@ -1,5 +1,3 @@
-package exp01;
-
 public final class BubbleSortPassPerItem<T extends Comparable<T>> implements Sorter<T> {
 	
 	public void sort(final T[] items) {
