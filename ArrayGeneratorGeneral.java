@@ -178,9 +178,6 @@ public class ArrayGeneratorGeneral {
             case "double":
                 result = DoubleArrayGenerator.doubleArrayGenerator(dimension, choice);
                 break;
-            case "float":
-                result = FloatArrayGenerator.floatArrayGenerator(dimension, choice);
-                break;
             case "char":
                 result = CharArrayGenerator.charArrayGenerator(dimension, choice);
                 break;
