@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class ArrayGeneratorGeneral {
 
     public static void main(String[] args) {
-        int dimension = 10000;
+        int dimension = 1000;
 
         BubbleSortPassPerItem bubbleSortPassPerItem = new BubbleSortPassPerItem();
         BubbleSortUntilNoChange bubbleSortUntilNoChange = new BubbleSortUntilNoChange();
@@ -19,35 +19,55 @@ public class ArrayGeneratorGeneral {
             int[] intArray = (int[]) arrayGeneratorGeneral("int", dimension, type);
             // Convert int[] to Integer[]
             Integer[] integerArray = Arrays.stream(intArray).boxed().toArray(Integer[]::new);
-            for (int i = 0; i < 150; i++) {
-                //int
-                // analyzeSortingPerformance(bubbleSortPassPerItem, integerArray, "bubbleSortPassPerItem", "int", type, i);
-                // analyzeSortingPerformance(bubbleSortUntilNoChange, integerArray, "bubbleSortUntilNoChange", "int", type, i);
-                // analyzeSortingPerformance(bubbleSortWhileNeeded, integerArray, "bubbleSortWhileNeeded", "int", type, i);
-            }
+            Integer[] integerArrayCopy = Arrays.stream(intArray).boxed().toArray(Integer[]::new);
+            Integer[] integerArrayCopy2 = Arrays.stream(intArray).boxed().toArray(Integer[]::new);
+            // for (int i = 0; i < 150; i++) {
+            //     //int
+            //     analyzeSortingPerformance(bubbleSortPassPerItem, integerArray, "bubbleSortPassPerItem", "int", type, i);
+            // }
+            // for (int i = 0; i < 150; i++) {
+            //     analyzeSortingPerformance(bubbleSortUntilNoChange, integerArrayCopy, "bubbleSortUntilNoChange", "int", type, i);
+            // }
+            // for (int i = 0; i < 150; i++) {
+            //     analyzeSortingPerformance(bubbleSortWhileNeeded, integerArrayCopy2, "bubbleSortWhileNeeded", "int", type, i);
+            // }
 
         }
 
         // FOR INTEGER
         for (String type : typeOfTheArray) {
             Integer[] integerArray = (Integer[]) arrayGeneratorGeneral("Integer", dimension, type);
-            for (int i = 0; i < 150; i++) {
-                //Integer
-                // analyzeSortingPerformance(bubbleSortPassPerItem, integerArray, "bubbleSortPassPerItem", "Integer", type, i);
-                // analyzeSortingPerformance(bubbleSortUntilNoChange, integerArray, "bubbleSortUntilNoChange", "Integer", type, i);
-                // analyzeSortingPerformance(bubbleSortWhileNeeded, integerArray, "bubbleSortWhileNeeded", "Integer", type, i);
-            }
+            Integer[] integerArrayCopy = integerArray;
+            Integer[] integerArrayCopy2 = integerArray;
+
+            // for (int i = 0; i < 150; i++) {
+            //     //Integer
+            //     analyzeSortingPerformance(bubbleSortPassPerItem, integerArray, "bubbleSortPassPerItem", "Integer", type, i);
+            // }
+            // for (int i = 0; i < 150; i++) {
+            //     analyzeSortingPerformance(bubbleSortUntilNoChange, integerArrayCopy, "bubbleSortUntilNoChange", "Integer", type, i);
+            // }
+            // for (int i = 0; i < 150; i++) {
+            //     analyzeSortingPerformance(bubbleSortWhileNeeded, integerArrayCopy2, "bubbleSortWhileNeeded", "Integer", type, i);
+            // }
         }
 
         // FOR STRING
         for (String type : typeOfTheArray) {
             String[] stringArray = (String[]) arrayGeneratorGeneral("String", dimension, type);
-            for (int i = 0; i < 150; i++) {
-                //String
-                // analyzeSortingPerformance(bubbleSortPassPerItem, stringArray, "bubbleSortPassPerItem", "String", type, i);
-                // analyzeSortingPerformance(bubbleSortUntilNoChange, stringArray, "bubbleSortUntilNoChange", "String", type, i);
-                // analyzeSortingPerformance(bubbleSortWhileNeeded, stringArray, "bubbleSortWhileNeeded", "String", type, i);
-            }
+            String[] stringArrayCopy = stringArray;
+            String[] stringArrayCopy2 = stringArray;
+
+            // for (int i = 0; i < 150; i++) {
+            //     //String
+            //     analyzeSortingPerformance(bubbleSortPassPerItem, stringArray, "bubbleSortPassPerItem", "String", type, i);
+            // }
+            // for (int i = 0; i < 150; i++) {
+            //     analyzeSortingPerformance(bubbleSortUntilNoChange, stringArrayCopy, "bubbleSortUntilNoChange", "String", type, i);
+            // }
+            // for (int i = 0; i < 150; i++) {
+            //     analyzeSortingPerformance(bubbleSortWhileNeeded, stringArrayCopy2, "bubbleSortWhileNeeded", "String", type, i);
+            // }
         }
 
         // FOR DOUBLE
@@ -55,12 +75,19 @@ public class ArrayGeneratorGeneral {
             double[] doubleArray = (double[]) arrayGeneratorGeneral("double", dimension, type);
             // Convert double[] to Double[]
             Double[] doubleArray2 = Arrays.stream(doubleArray).boxed().toArray(Double[]::new);
-            for (int i = 0; i < 150; i++) {
-                //Double
-                // analyzeSortingPerformance(bubbleSortPassPerItem, doubleArray2, "bubbleSortPassPerItem", "Double", type, i);
-                // analyzeSortingPerformance(bubbleSortUntilNoChange, doubleArray2, "bubbleSortUntilNoChange", "Double", type, i);
-                // analyzeSortingPerformance(bubbleSortWhileNeeded, doubleArray2, "bubbleSortWhileNeeded", "Double", type, i);
-            }
+            Double[] doubleArrayCopy = Arrays.stream(doubleArray).boxed().toArray(Double[]::new);
+            Double[] doubleArrayCopy2 = Arrays.stream(doubleArray).boxed().toArray(Double[]::new);
+            
+            // for (int i = 0; i < 150; i++) {
+            //     //Double
+            //     analyzeSortingPerformance(bubbleSortPassPerItem, doubleArray2, "bubbleSortPassPerItem", "Double", type, i);
+            // }
+            // for (int i = 0; i < 150; i++) {
+            //     analyzeSortingPerformance(bubbleSortUntilNoChange, doubleArrayCopy, "bubbleSortUntilNoChange", "Double", type, i);
+            // }
+            // for (int i = 0; i < 150; i++) {
+            //     analyzeSortingPerformance(bubbleSortWhileNeeded, doubleArrayCopy2, "bubbleSortWhileNeeded", "Double", type, i);            
+            // }
         }
 
         // FOR CHAR
@@ -68,15 +95,28 @@ public class ArrayGeneratorGeneral {
             char[] charArray = (char[]) arrayGeneratorGeneral("char", dimension, type);
             // Convert char[] to Character[]
             Character[] charArray2 = new Character[charArray.length];
+            Character[] charArrayCopy = new Character[charArray.length];
+            Character[] charArrayCopy2 = new Character[charArray.length];
             for (int i = 0; i < charArray.length; i++) {
                 charArray2[i] = charArray[i];
             }
-            for (int i = 0; i < 150; i++) {
-                //Character
-                // analyzeSortingPerformance(bubbleSortPassPerItem, charArray2, "bubbleSortPassPerItem", "Character", type, i);
-                // analyzeSortingPerformance(bubbleSortUntilNoChange, charArray2, "bubbleSortUntilNoChange", "Character", type, i);
-                // analyzeSortingPerformance(bubbleSortWhileNeeded, charArray2, "bubbleSortWhileNeeded", "Character", type, i);
+            for (int i = 0; i < charArray.length; i++) {
+                charArrayCopy[i] = charArray[i];
             }
+            for (int i = 0; i < charArray.length; i++) {
+                charArrayCopy2[i] = charArray[i];
+            }
+            
+            // for (int i = 0; i < 150; i++) {
+            //     //Character
+            //     analyzeSortingPerformance(bubbleSortPassPerItem, charArray2, "bubbleSortPassPerItem", "Character", type, i);
+            // }
+            // for (int i = 0; i < 150; i++) {
+            //     analyzeSortingPerformance(bubbleSortUntilNoChange, charArrayCopy, "bubbleSortUntilNoChange", "Character", type, i);
+            // }
+            // for (int i = 0; i < 150; i++) {
+            //     analyzeSortingPerformance(bubbleSortWhileNeeded, charArrayCopy2, "bubbleSortWhileNeeded", "Character", type, i);
+            // }
         }
 
         // FOR BYTE
@@ -84,14 +124,28 @@ public class ArrayGeneratorGeneral {
             byte[] byteArray = (byte[]) arrayGeneratorGeneral("byte", dimension, type);
             // Convert byte[] to Byte[]
             Byte[] byteArray2 = new Byte[byteArray.length];
+            Byte[] byteArrayCopy = new Byte[byteArray.length];
+            Byte[] byteArrayCopy2 = new Byte[byteArray.length];
+
             for (int i = 0; i < byteArray.length; i++) {
                 byteArray2[i] = byteArray[i];
             }
+            for (int i = 0; i < byteArray.length; i++) {
+                byteArrayCopy[i] = byteArray[i];
+            }
+            for (int i = 0; i < byteArray.length; i++) {
+                byteArrayCopy2[i] = byteArray[i];
+            }
+
             for (int i = 0; i < 150; i++) {
                 //Byte
-                // analyzeSortingPerformance(bubbleSortPassPerItem, byteArray2, "bubbleSortPassPerItem", "Byte", type, i);
-                // analyzeSortingPerformance(bubbleSortUntilNoChange, byteArray2, "bubbleSortUntilNoChange", "Byte", type, i);
-                // analyzeSortingPerformance(bubbleSortWhileNeeded, byteArray2, "bubbleSortWhileNeeded", "Byte", type, i);
+                analyzeSortingPerformance(bubbleSortPassPerItem, byteArray2, "bubbleSortPassPerItem", "Byte", type, i);
+            }
+            for (int i = 0; i < 150; i++) {
+                analyzeSortingPerformance(bubbleSortUntilNoChange, byteArrayCopy, "bubbleSortUntilNoChange", "Byte", type, i);
+            }
+            for (int i = 0; i < 150; i++) {
+                analyzeSortingPerformance(bubbleSortWhileNeeded, byteArrayCopy2, "bubbleSortWhileNeeded", "Byte", type, i);
             }
         }
     }
@@ -108,18 +162,18 @@ public class ArrayGeneratorGeneral {
     }
 
     public static void writeResultToCSV(String funcName, String type, String typeOfTheArray, long startTime, long endTime, long executionTime) {
-        String csvFilename = "resultBytet10000.csv";
+        String csvFilename = "resultByte1000.csv";
         try (FileWriter writer = new FileWriter(csvFilename, true)) {
             writer.append(funcName)
-                    .append(", ")
+                    .append(",")
                     .append(type)
-                    .append(", ")
+                    .append(",")
                     .append(typeOfTheArray)
-                    .append(", ")
+                    .append(",")
                     .append(String.valueOf(startTime))
-                    .append(", ")
+                    .append(",")
                     .append(String.valueOf(endTime))
-                    .append(", ")
+                    .append(",")
                     .append(String.valueOf(executionTime))
                     .append("\n");                    
         } catch (IOException e) {
