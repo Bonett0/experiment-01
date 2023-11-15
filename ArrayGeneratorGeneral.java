@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class ArrayGeneratorGeneral {
 
     public static void main(String[] args) {
-        int dimension = 1000;
+        int dimension = 10000;
 
         BubbleSortPassPerItem bubbleSortPassPerItem = new BubbleSortPassPerItem();
         BubbleSortUntilNoChange bubbleSortUntilNoChange = new BubbleSortUntilNoChange();
@@ -104,7 +104,7 @@ public class ArrayGeneratorGeneral {
                 //Byte
                 // analyzeSortingPerformance(bubbleSortPassPerItem, byteArray2, "bubbleSortPassPerItem", "Byte", type, i);
                 // analyzeSortingPerformance(bubbleSortUntilNoChange, byteArray2, "bubbleSortUntilNoChange", "Byte", type, i);
-                analyzeSortingPerformance(bubbleSortWhileNeeded, byteArray2, "bubbleSortWhileNeeded", "Byte", type, i);
+                // analyzeSortingPerformance(bubbleSortWhileNeeded, byteArray2, "bubbleSortWhileNeeded", "Byte", type, i);
             }
         }
     }
@@ -121,7 +121,7 @@ public class ArrayGeneratorGeneral {
     }
 
     public static void writeResultToCSV(String funcName, String type, String typeOfTheArray, long startTime, long endTime, long executionTime) {
-        String csvFilename = "resultByte1000.csv";
+        String csvFilename = "resultBytet10000.csv";
         try (FileWriter writer = new FileWriter(csvFilename, true)) {
             writer.append(funcName)
                     .append(", ")
