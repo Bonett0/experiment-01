@@ -63,19 +63,6 @@ public class ArrayGeneratorGeneral {
             }
         }
 
-        // // FOR FLOAT                     --> DOES NOT WORK
-        // for (String type : typeOfTheArray) {
-        //     float[] floatArray = (float[]) arrayGeneratorGeneral("float", dimension, type);
-        //     // Convert float[] to Float[]
-        //     Float[] floatArray2 = Arrays.stream(floatArray).boxed().toArray(Float[]::new);
-        //     for (int i = 0; i < 150; i++) {
-        //         //Float
-        //         analyzeSortingPerformance(bubbleSortPassPerItem, floatArray2, "bubbleSortPassPerItem", "Float", type, i);
-        //         // analyzeSortingPerformance(bubbleSortUntilNoChange, floatArray2, "bubbleSortUntilNoChange", "Float", type, i);
-        //         // analyzeSortingPerformance(bubbleSortWhileNeeded, floatArray2, "bubbleSortWhileNeeded", "Float", type, i);
-        //     }
-        // }
-
         // FOR CHAR
         for (String type : typeOfTheArray) {
             char[] charArray = (char[]) arrayGeneratorGeneral("char", dimension, type);
