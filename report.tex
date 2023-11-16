@@ -1,11 +1,13 @@
 \documentclass{article}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{geometry}
 \usepackage{tcolorbox}
 \usepackage{amssymb} 
 \usepackage{wasysym}
+\usepackage{bm}
 \definecolor{lightgray}{gray}{0.9} % Define lightgray color
-
+\geometry{left=0.8in,right=0.8in,top=0.8in,bottom=1in}
 
 \title{Experiment 1: Experimentation \& Evaluation 2023}
 \author{Your Name}
@@ -18,7 +20,10 @@ Short (120-130 words) summary of your entire report. Give the reader a quick ide
 
 
 \section{Introduction}
-Introduce the topic of investigation to the reader and motivate why you did the experiment. Note that in our case, writing “because I was told to by the course instructor” is not a valid answer. Please assume that you are trying to answer a certain relevant question and motivate its relevance. (In a “real” study report, you would need to also discuss any relevant prior research results here. Given our setting, however, we skip any “related work” consideration.) Your final paragraph of the introduction should outline your proposed experiment.
+Bubble Inc., a software development company specializing in Java utilities, is faced with the crucial decision of selecting a sorting algorithm for inclusion in their upcoming library. The company has identified three candidate algorithms: BubbleSortPassPerItem, BubbleSortUntilNoChange, and BubbleSortWhileNeeded, all implementing the Sorter interface. The primary criterion for the selection process is performance, specifically the execution time required by each algorithm, with lower execution times being preferable.\\
+To address this decision, we have designed a comprehensive experiment aimed at rigorously assessing the performance of the three sorting algorithms. While the choice of sorting algorithm is the primary independent variable, we also consider the manipulation of additional independent variables, such as the type of data in the array to be sorted and the array behaviour (random, sorted, partSorted, reverse, duplicates, noDuplicates, equal).\\
+The experiment involves multiple repetitions of measurements to ensure statistical reliability. In this report, we present a detailed account of the experimental design, methodology, and the results obtained through careful analysis.\\
+This experiment aims not only to contribute valuable insights to Bubble Inc.'s decision-making process but also to adhere to best practices in experimental design, ensuring transparency, reproducibility, and reliability in the assessment of sorting algorithm performance.
 
 
 \begin{tcolorbox}[title=Hypotheses:, colback=white, colframe=black, arc=0pt, outer arc=0pt]
@@ -30,45 +35,46 @@ In the following subsections, describe everything that a reader would need to re
 \subsection{Variables}
 Explicitly identify the independent variable(s) (i.e., what you as the experimenter manipulate): 
 
-\begin{minipage}{0.48\textwidth}
     \begin{tcolorbox}[title=Independent Variable:, colback=white, colframe=black, arc=0pt, outer arc=0pt]
-        TODO:
+        \begin{itemize}
+         \item[1.] \textbf{Sorting Algorithm (Algorithm Type):}
+            \begin{itemize}
+            \item BubbleSortPassPerItem
+            \item BubbleSortUntilNoChange
+            \item BubbleSortWhileNeeded
+            \end{itemize}
+        \item[2.] \textbf{Data Type (Type):}
+            \begin{itemize}
+            \item int
+            \item Integer
+            \item String
+            \item double
+            \item char
+            \item byte
+            \end{itemize}
+        \item[3.] \textbf{Array Characteristics (Type of the Array):}
+            \begin{itemize}
+            \item random
+            \item sorted
+            \item partially sorted
+            \item reverse sorted
+            \item with duplicates
+            \item with no duplicates
+            \item with equal elements
+            \end{itemize}
+        \end{itemize}
+
     \end{tcolorbox}
-\end{minipage}%
-\hfill
-\begin{minipage}{0.48\textwidth}
-    \begin{tcolorbox}[title=Levels, colback=white, colframe=black, arc=0pt, outer arc=0pt]
-        
-    \end{tcolorbox}
-\end{minipage}
-\\\\\\
 Explicitly identify the dependent variable(s) (i.e., what you measure):\\
 
-\begin{minipage}{0.48\textwidth}
-    \begin{tcolorbox}[title=Dependent Variable:, colback=white, colframe=black, arc=0pt, outer arc=0pt]
-        TODO:
-    \end{tcolorbox}
-\end{minipage}%
-\hfill
-\begin{minipage}{0.48\textwidth}
-    \begin{tcolorbox}[title=Measurement Scale, colback=white, colframe=black, arc=0pt, outer arc=0pt]
-        
-    \end{tcolorbox}
-\end{minipage}
-\\\\\\
-Explicitly identify any important control variable(s) (i.e., what you keep constant): Note that you do not need to spell out items that you do not expect to make a significant difference! E.g., do not list room temperature unless you believe that minor differences have an impact! Only list variables here that you think are important to keep at a certain level.\\
-
-\begin{minipage}{0.48\textwidth}
-    \begin{tcolorbox}[title=Control Variable:, colback=white, colframe=black, arc=0pt, outer arc=0pt]
-        TODO:
-    \end{tcolorbox}
-\end{minipage}%
-\hfill
-\begin{minipage}{0.48\textwidth}
-    \begin{tcolorbox}[title=Fixed Value, colback=white, colframe=black, arc=0pt, outer arc=0pt]
-        
-    \end{tcolorbox}
-\end{minipage}
+\begin{tcolorbox}[title=Dependent Variable:, colback=white, colframe=black, arc=0pt, outer arc=0pt]
+    \begin{itemize}
+        \item[1.] \textbf{Execution Time:}
+        \begin{itemize}
+            \item Measured in nanoseconds, capturing the time taken by each sorting algorithm to complete the sorting process.
+        \end{itemize}
+    \end{itemize}
+\end{tcolorbox}
 
 \subsection{Design}
 Check off the characteristics of your experimental design:\\
@@ -76,14 +82,15 @@ Check off the characteristics of your experimental design:\\
 \textbf{Type of Study} (check one):\\
 \noindent
 \begin{minipage}{0.4\textwidth}
-    \fbox{\Square\ \textbf{Observational Study}}
+    \fbox{\Square{} \textbf{Observational Study}}
 \end{minipage}%
 \begin{minipage}{0.4\textwidth}
-    \fbox{\Square\ \textbf{Quasi-Experiment}}
+    \fbox{\Square{} \textbf{Quasi-Experiment}}
 \end{minipage}%
-\begin{minipage}{0.0\textwidth}
-    \fbox{\Square\ \textbf{Experiment}}
-\end{minipage}
+\begin{minipage}{0.2\textwidth}
+    \fbox{\bm{\XBox{}} \textbf{Experiment}}
+\end{minipage}\\\\
+- Conducted controlled experiments with intentional manipulation of variables to assess the performance of sorting algorithms.
 \\\\
 \textbf{Number of Factors} (check one):\\
 \noindent
@@ -91,12 +98,13 @@ Check off the characteristics of your experimental design:\\
     \fbox{\Square\ \textbf{Single-Factor Design}}
 \end{minipage}%
 \begin{minipage}{0.4\textwidth}
-    \fbox{\Square\ \textbf{Multi-Factor Design}}
+    \fbox{\bm{\XBox{}} \textbf{Multi-Factor Design}}
 \end{minipage}%
 \begin{minipage}{0.0\textwidth}
     \fbox{\Square\ \textbf{Other}}
-\end{minipage}
-\\\\
+\end{minipage}\\\\
+- Investigated the impact of multiple independent variables, including the sorting algorithm, data type, and array characteristics.
+
 Explain, (1) in text using terminology from the book and lectures and (2) with a figure (similar to those used in Chapter 3 of the Field \& Hole book), what kind of experiment you did.
 
 \subsection{Apparatus and Materials}

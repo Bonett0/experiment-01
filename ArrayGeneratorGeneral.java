@@ -12,8 +12,7 @@ public class ArrayGeneratorGeneral {
         BubbleSortUntilNoChange bubbleSortUntilNoChange = new BubbleSortUntilNoChange();
         BubbleSortWhileNeeded bubbleSortWhileNeeded = new BubbleSortWhileNeeded();
 
-        String[] typeOfTheArray = { "random", "sorted", "partSorted", "reverse", "duplicates", "noDuplicates",
-                "equal" };
+        String[] typeOfTheArray = { "random", "sorted", "partSorted", "reverse", "duplicates", "noDuplicates", "equal" };
 
         // FOR INT
         for (String type : typeOfTheArray) {
