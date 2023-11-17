@@ -109,9 +109,100 @@ Explain, (1) in text using terminology from the book and lectures and (2) with a
 
 \subsection{Apparatus and Materials}
 Describe in sufficient detail any relevant “props” that you used in your experiment. This could be the computer you used (exact model and specification), the software used (URL, version numbers), the way you measured, e.g., time (A stopwatch? A background process on the computer that got automatically triggered?). Omit needless detail (e.g., think whether details like the size of the table the laptop was placed on, or the hard disk size, might have affected your results or not).
+\begin{itemize}
+  \item \textbf{Sorting Algorithms:}
+    \begin{itemize}
+      \item Utilized three sorting algorithms:
+        \begin{itemize}
+          \item BubbleSortPassPerItem
+          \item BubbleSortUntilNoChange
+          \item BubbleSortWhileNeeded
+        \end{itemize}
+    \end{itemize}
+     All algorithms implement the Sorter interface.
+
+  \item \textbf{Data Types:}
+    \begin{itemize}
+      \item Evaluated various data types, including:
+        \begin{itemize}
+          \item int
+          \item Integer
+          \item String
+          \item double
+          \item char
+          \item Byte
+        \end{itemize}
+    \end{itemize}
+
+  \item \textbf{Array Characteristics:}
+    \begin{itemize}
+      \item Generated arrays with different characteristics:
+        \begin{itemize}
+          \item random
+          \item sorted
+          \item partSorted
+          \item reverse
+          \item duplicates
+          \item noDuplicates
+          \item equal
+        \end{itemize}
+    \end{itemize}
+
+  \item \textbf{Measurement Tool:}
+    \begin{itemize}
+      \item Employed \texttt{System.nanoTime()} for precise measurement of execution time.
+      \item Employed \texttt{System.currentTimeMillis()} for program measurements time. 
+      \item Employed a stopwatch to measure again the time the program took.
+    \end{itemize}
+    
+    \item \textbf{Machine used:}
+    \begin{itemize}
+      \item Hardware Model: \texttt{Dell Inc. Precision 5550}
+      \item Firmware version: \texttt{1.24.1}
+      \item Processor: \texttt{Intel® Core™ i7-10850H × 12}
+      \item OS name: \texttt{Ubuntu 23.04}
+      \item OS type: \texttt{64-bit}
+      \item Kernel version: \texttt{Linux 6.2.0-36-generic}
+    \end{itemize}
+\end{itemize}
+
+
 
 \subsection{Procedure}
 Describe how you used your props and/or the participants to perform your actual experiment, i.e., how you actually carried out a single experimental run. What was done to the participants? What did they have to do? How long did each session take (unless this is an actual dependent variable)? If you did not have participants, explain, e.g., what software was started by whom in what order.
+\begin{itemize}
+  \item[1.] \textbf{Algorithm Implementation:}
+    \begin{itemize}
+      \item Implemented BubbleSortPassPerItem, BubbleSortUntilNoChange, and BubbleSortWhileNeeded algorithms.
+    \end{itemize}
+
+  \item[2.] \textbf{Array Generation:}
+    \begin{itemize}
+      \item Created arrays of varying types and characteristics using the \texttt{arrayGeneratorGeneral} method.
+    \end{itemize}
+
+  \item[3.] \textbf{Sorting Performance Analysis:}
+    \begin{itemize}
+      \item Repeated sorting processes 150 times for each combination of algorithm, data type, and array characteristics.
+      \item Executed the sorting algorithms on generated arrays and recorded the execution time.
+    \end{itemize}
+
+  \item[4.] \textbf{Data Collection:}
+    \begin{itemize}
+      \item Collected and stored execution time data for analysis and reporting.
+      \item Limited data recording to after the 25th iteration to ensure stabilized results.
+    \end{itemize}
+
+  \item[5.] \textbf{CSV Result Logging:}
+    \begin{itemize}
+      \item Logged the experiment results, including algorithm type, data type, array order, start time, end time, and elapsed time, into a CSV file (\texttt{results1000.csv/results10000.csv}).
+    \end{itemize}
+\end{itemize}
+Times taken for the experiment:
+    \begin{itemize}
+     \item For array dimension of 1000: 20 minutes ($10:10 \rightarrow 10:30$)
+     \item For array dimension of 10000: 2 hours ($10:37 \rightarrow 12:35$)
+    \end{itemize}
 
 \section{Results}
 \subsection{Visual Overview}
