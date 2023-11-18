@@ -90,7 +90,24 @@ Check off the characteristics of your experimental design:\\
 \begin{minipage}{0.2\textwidth}
     \fbox{\bm{\XBox{}} \textbf{Experiment}}
 \end{minipage}\\\\
-- Conducted controlled experiments with intentional manipulation of variables to assess the performance of sorting algorithms.
+Conducted controlled experiments with intentional manipulation of variables to assess the performance of sorting algorithms.
+
+In within-subjects (or 'repeated measures') designs, each participant is exposed to all of the conditions of the experiment.
+
+In our experiment, we test each algorithm (\texttt{BubbleSortPassPerItem}, \texttt{BubbleSortUntilNoChange}, \texttt{BubbleSortWhileNeeded}) for each combination of the element type of the array with different characteristics of the array.
+
+This means that each algorithm is tested for:
+
+\begin{itemize}
+    \item (\texttt{int}, [random, sorted, partially sorted, reverse sorted, with duplicates, with no duplicates, equal elements]),
+    \item (\texttt{Integer}, [random, sorted, partially sorted, reverse sorted, with duplicates, with no duplicates, equal elements]),
+    \item (\texttt{String}, [random, sorted, partially sorted, reverse sorted, with duplicates, with no duplicates, equal elements]),
+    \item (\texttt{double}, [random, sorted, partially sorted, reverse sorted, with duplicates, with no duplicates, equal elements]),
+    \item (\texttt{char}, [random, sorted, partially sorted, reverse sorted, with duplicates, with no duplicates, equal elements]),
+    \item (\texttt{byte}, [random, sorted, partially sorted, reverse sorted, with duplicates, with no duplicates, equal elements]).
+\end{itemize}
+
+Furthermore, it has repeated measures because each of the previous array-type combinations is tested 150 times, for which the first 25 iterations are not counted as actual values but as warm-up values.
 \\\\
 \textbf{Number of Factors} (check one):\\
 \noindent
