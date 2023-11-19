@@ -16,14 +16,12 @@
 \geometry{left=0.8in,right=0.8in,top=0.8in,bottom=1in}
 
 \title{Experiment 1: Experimentation \& Evaluation 2023}
-\author{Your Name}
+\author{Giorgio Bonetto \& Raffaele Perri}
 \date{\today}
 
 \begin{document}
 \maketitle
-
-Short (120-130 words) summary of your entire report. Give the reader a quick idea of what you did and what the main findings were (if you prepare this report ahead of time, leave out the findings until after you finish the analysis).
-
+In this comprehensive experiment assessing sorting algorithms for Bubble Inc.'s library, three algorithms (\texttt{BubbleSortPassPerItem}, \texttt{BubbleSortUntilNoChange}, \texttt{BubbleSortWhileNeeded}) were rigorously evaluated across diverse variables. The results consistently favored \texttt{BubbleSortWhileNeeded}, affirming its superiority in execution time. While variations occurred with different data types and array characteristics, the general trend supported the hypotheses. Notably, array dimension influenced execution time, but algorithm efficiency ranking remained consistent. Discrepancies were observed in specific scenarios, attributed to implementation details and environmental factors. Overall, the findings support selecting \texttt{BubbleSortWhileNeeded} for Bubble Inc.'s library, emphasizing its efficiency in diverse sorting scenarios.
 
 \section{Introduction}
 Bubble Inc., a software development company specializing in Java utilities, is faced with the crucial decision of selecting a sorting algorithm for inclusion in their upcoming library. The company has identified three candidate algorithms: BubbleSortPassPerItem, BubbleSortUntilNoChange, and BubbleSortWhileNeeded, all implementing the Sorter interface. The primary criterion for the selection process is performance, specifically the execution time required by each algorithm, with lower execution times being preferable.\\
@@ -138,7 +136,7 @@ Furthermore, it has repeated measures because each of the previous array-type co
 - Investigated the impact of multiple independent variables, including the sorting algorithm, data type, and array characteristics.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{./data/Group12.png}
+    \includegraphics[width=0.8\textwidth]{./data/Group12.png}
     \caption{Multi-factor design}
 \end{figure}
 
@@ -634,8 +632,10 @@ results. How could these be remedied in future work?
 
 \section{Appendix}
 \subsection{Materials}
-Any documents you used for your informed consent (information sheets, consent) or as part of your apparatus (e.g., manual, hand-out), please include them here.
-
+\textbf{Book: } \textit{How to Design and Report Experiments} by Andy Field and Graham J Hole\\
+\textbf{Software: } \textit{Google Colab} for statistical analysis, \textit{Visual Studio Code}, \textit{Figma} for multi-factor design\\
+\textbf{Programming Language: } \textit{Java} for implementation of sorting algorithms and for running the tests\\
+\textbf{Machine: } \textit {Dell Inc. Precision 5550 }
 \subsection{Reproduction Package}
 Before, during, and after the experiment you collected all kinds of data. Don't ever throw such data away! Any plots, tables, summaries, and statistics provided in this report should be recreatable from the raw data you have.
 
