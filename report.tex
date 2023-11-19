@@ -8,7 +8,10 @@
 \usepackage{subcaption}
 \usepackage{booktabs}
 \usepackage{bm}
+\usepackage{enumitem}
 \usepackage{booktabs} 
+
+\renewcommand{\labelenumi}{\Roman{enumi}.}
 \definecolor{lightgray}{gray}{0.9} % Define lightgray color
 \geometry{left=0.8in,right=0.8in,top=0.8in,bottom=1in}
 
@@ -30,8 +33,17 @@ This experiment aims not only to contribute valuable insights to Bubble Inc.'s d
 
 
 \begin{tcolorbox}[title=Hypotheses:, colback=white, colframe=black, arc=0pt, outer arc=0pt]
-    Write down your (falsifiable!) hypotheses here. Each hypothesis must include independent and your dependent variables. You must write down your hypotheses before you do your experiment!
+    \textbf{Hypothesis 1:} The \texttt{BubbleSortWhileNeeded} algorithm will exhibit significantly lower execution times compared to \texttt{BubbleSortPassPerItem} and \texttt{BubbleSortUntilNoChange} across various array types and dimensions.
+    
+    \textbf{Hypothesis 2:} The performance of sorting algorithms will vary based on the data type, with certain algorithms demonstrating better efficiency for specific data types.
+    
+    \textbf{Hypothesis 3:} The sorting algorithms will perform differently depending on the characteristics of the array, with variations in execution time for random, sorted, partially sorted, reverse sorted, arrays with duplicates, arrays with no duplicates, and arrays with equal elements.
+    
+    \textbf{Hypothesis 4:} There will be interactions between the sorting algorithm, data type, and array characteristics, influencing the overall performance of the sorting process.
+    
+    \textbf{Hypothesis 5:} As the array dimension increases, the execution time for each sorting algorithm will also increase, but the relative performance differences between algorithms will remain consistent.
 \end{tcolorbox}
+
 
 \section{Method}
 In the following subsections, describe everything that a reader would need to replicate your experiment in all important details.
@@ -547,17 +559,78 @@ Here, we present the standard deviation of the elapsed time for each algorithm w
 
 \section{Discussion}
 \subsection{Compare Hypothesis to Results}
-Provide a brief restatement of the main results from the previous section, and if (or if not) these support your research hypothesis.
+\begin{tcolorbox}[title=Experiment Overview, colback=white, colframe=black, arc=0pt, outer arc=0pt]
+    In the conducted experiment, the performance of three sorting algorithms—\texttt{BubbleSortPassPerItem}, \texttt{BubbleSortUntilNoChange}, and \texttt{BubbleSortWhileNeeded}—was rigorously assessed across various independent variables, including sorting algorithm type, data type, array characteristics, and array dimension. The primary dependent variable was the execution time, measured in nanoseconds.
+\end{tcolorbox}
 
-If there is a discrepancy between your hypothesis and the results of your experiment, speculate about why you were unable to find evidence to support your hypothesis. 
+\subsection*{Main Results}
+\begin{itemize}
+ \item \textbf{Algorithm Comparison}:
+        \begin{itemize}
+          \item \texttt{BubbleSortWhileNeeded} consistently demonstrated the lowest execution times across different array types and dimensions.
+          \item \texttt{BubbleSortUntilNoChange} also exhibited competitive performance, often outperforming \texttt{BubbleSortPassPerItem}.
+        \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+ \item \textbf{Data Type Influence}:
+        \begin{itemize}
+          \item While there were variations, the performance across data types remained consistent with \texttt{BubbleSortWhileNeeded} being the most efficient in most cases.
+        \end{itemize}
+\end{itemize}
+
+
+\begin{itemize}
+ \item \textbf{Array Characteristics Impact}:
+        \begin{itemize}
+          \item Array characteristics, such as order and type, influenced algorithm performance.
+          \item \texttt{BubbleSortWhileNeeded} and \texttt{BubbleSortUntilNoChange} generally outperformed \texttt{BubbleSortPassPerItem}, especially in sorted array orders.
+        \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+ \item \textbf{Array Dimension Effect}:
+        \begin{itemize}
+          \item As expected, execution times increased with the array dimension, but the relative performance differences between algorithms remained consistent.
+        \end{itemize}
+\end{itemize}
+
+\subsection*{Support for Research Hypotheses}
+
+\begin{itemize}
+    \item \textbf{Hypothesis 1 (Algorithm Type):} Supported.\\ \texttt{BubbleSortWhileNeeded} consistently demonstrated the fastest execution times, aligning with the hypothesis.
+    \item \textbf{Hypothesis 2 (Data Type):} Partially supported. \\
+    While there were variations, the overall trend of \texttt{BubbleSortWhileNeeded}'s efficiency held across different data types.
+    \item \textbf{Hypothesis 3 (Array Characteristics):} Supported. \\
+    The experiment demonstrated that array characteristics significantly impact sorting algorithm performance.
+    \item \textbf{Hypothesis 4 (Interactions):} Supported. \\
+    Interactions between algorithm type, data type, and array characteristics were evident in influencing sorting performance.
+    \item \textbf{Hypothesis 5 (Array Dimension):} Supported. \\
+    As expected, execution times increased with array dimension, but the ranking of algorithm efficiency remained consistent.
+\end{itemize}
+
+
+\subsection*{Discrepancies}
+
+\begin{itemize}[label=$\bullet$]
+    \item While the experiment largely supported the hypotheses, there were instances where the performance differences between algorithms were less pronounced, especially in certain array types.
+    \item Variability in data types and array characteristics may have contributed to instances where the expected trends were not consistently observed.
+\end{itemize}
+
+\subsection*{Speculations on Discrepancies}
+
+\begin{itemize}[label=$\bullet$]
+    \item The specific implementation details of the sorting algorithms and the characteristics of the Java runtime environment on the testing machine could also contribute to variations.
+\end{itemize}
+
+\begin{tcolorbox}[title=Conclusion, colback=white, colframe=black, arc=0pt, outer arc=0pt]
+    Overall, the experiment's results provide valuable insights into the performance of sorting algorithms, supporting the selection of \texttt{BubbleSortWhileNeeded} as a preferable choice for Bubble Inc.'s upcoming library, especially in scenarios where quick and efficient sorting is crucial.
+\end{tcolorbox}
 
 
 \subsection{Limitations and Threats to Validity}
 Acknowledge any faults or limitations your study has, and how seriously these affect your
 results. How could these be remedied in future work?
-
-\subsection{Conclusions}
-End with the main conclusions that can be drawn from your study.
 
 \section{Appendix}
 \subsection{Materials}
