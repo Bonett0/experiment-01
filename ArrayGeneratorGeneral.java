@@ -134,7 +134,7 @@ public class ArrayGeneratorGeneral {
 
     public static void writeResultToCSV(String funcName, String type, String typeOfTheArray, long startTime,
             long endTime, long executionTime) {
-        String csvFilename = "results10000.csv";
+        String csvFilename = "results1000.csv";
         try (FileWriter writer = new FileWriter(csvFilename, true)) {
             // check if file is empty
             if (new File(csvFilename).length() == 0) {
