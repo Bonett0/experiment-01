@@ -7,6 +7,7 @@
 \usepackage{wasysym}
 \usepackage{subcaption}
 \usepackage{bm}
+\usepackage{booktabs} 
 \definecolor{lightgray}{gray}{0.9} % Define lightgray color
 \geometry{left=0.8in,right=0.8in,top=0.8in,bottom=1in}
 
@@ -227,95 +228,144 @@ Times taken for the experiment:
 
 \section{Results}
 \subsection{Visual Overview}
-Provide an insightful overview of the data you collected. This requires some engineering from your part, to find a good degree of summarization: On one end of the spectrum, you don't summarize, and report hundreds of raw measurement values in a block of text. On the other end of the spectrum, you report a single number (like a mean value). Both approaches are bad.
 
-Instead, use appropriate visual summaries (such as scatter plots, histograms, box plots, or empirical cumulative distribution functions) to show the distribution of your data. If you have a very small number of measurement values, then report all of them in a well organized table (where rows and/or columns correspond to different levels of different factors).
+Below, we present graphs representing the distribution of our data obtained through testing three different algorithms with various independent variables. The graphs are categorized into two groups: the first group represents data collected with an array dimension of 1000, while the second group represents data collected with an array dimension of 10000.\\
 
+We have chosen to display the graphs using Boxen plots due to their ability to offer a detailed representation of the dataset's distribution. This choice is particularly advantageous for large datasets as Boxen plots provide enhanced visibility into distribution tails and varying data densities.\\
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{./data/comparison_algorithm_1000.png}
         \caption{Array dimension = 1000}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{./data/comparison_algorithm_10000.png}
         \caption{Array dimension = 10000}
     \end{subfigure}
+    \caption{Graphs Algorithms Comparison}
 \end{figure}
 
+Here, we present graphs representing the distribution of our data obtained by testing three different algorithms. In both dimensions, the dense part of the data covers almost the same range, albeit on different scales. The array with a dimension of 1000 elements is on the scale of seconds multiplied by $10^{-2}$, while the array with a dimension of 10000 elements is on the scale of seconds.\\
+
+From these two graphs, we can infer that, generally, regardless of the array type or dimension, the WhileNeededAlgorithm consistently emerges as the fastest.\\
+
+Next, we explore how the algorithms perform with different types of arrays and different array orders.\\
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{./data/array_order_1000.png}
+        \caption{Array dimension = 1000}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.4\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{./data/array_type_1000.png}
-    \end{subfigure}
-    \caption{Array dimension = 1000}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{./data/array_order_10000.png}
+        \caption{Array dimension = 10000}
+    \end{subfigure}
+    \caption{Graph Array order Comparison between algorithms} 
+\end{figure}
+
+From these two graphs, we can observe the distinct sorting approaches employed by the three algorithms. For instance, when focusing on the array order "sorted," it becomes evident that the UntilNoChange and WhileNeeded algorithms outperform the PassPerItem algorithm. This suggests that, in many instances and depending on the array type, the former two algorithms efficiently traverse the array and return results swiftly. In contrast, the PassPerItem algorithm, with its need to compare each element and undergo a specified number of passes, experiences reduced efficiency.\\
+
+Shifting our focus to the remaining array orders, we notice that they all closely align with the dense part of the first graph, which provides a general comparison of the three algorithms.\\
+
+In the last two graphs, we illustrate the differences between various array types. Notably, the WhileNeededAlgorithm and UntilNoChange algorithms exhibit a broad distribution along the y-axis (elapsed time), likely influenced by the varying array orders. On the other hand, irrespective of array type and order, the other algorithm's data is more concentrated within a specific range.\\
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./data/array_type_1000.png}
+        \caption{Array dimension = 1000}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{./data/array_type_10000.png}
+        \caption{Array dimension = 1000}
     \end{subfigure}
-    \caption{Array dimension = 10000}
+    \caption{Graph Array type Comparison between algorithms}
 \end{figure}
+\subsubsection{Standard Deviantion Calculation}
+
+Below, you'll find the standard deviation calculations for the mean of the elapsed time among algorithms.\\
+
+We opted to use standard deviation instead of absolute deviation because standard deviation is more sensitive to values that deviate significantly from the mean compared to absolute deviation.\\
+
+The standard deviation is calculated using the following formula:
+\[ \sigma = \sqrt{\frac{\sum_{i=1}^{n}(x_i - \bar{x})^2}{n-1}} \]
+
+Below, we observe the differences in the standard deviation of the mean elapsed time among algorithms for array dimensions of both 1000 and 10000.\\
+
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{./data/std_algo_1000.png}
         \caption{Array dimension = 1000}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{./data/std_algo_10000.png}
         \caption{Array dimension = 10000}
     \end{subfigure}
+    \caption{STD Mean of elapsed time between algorithms}
 \end{figure}
+
+Across both dimensions, the WhileNeededAlgorithm consistently demonstrates its efficiency, confirming it as the most efficient algorithm on average.
+
+\begin{table}[h]
+  \centering
+  \caption{Standard Deviation of Elapsed Time for Each Algorithm}
+  \begin{tabular}{lccc}
+    \toprule
+    Algorithm & STD-MEAN (10,000) & STD-MEAN (1,000) \\
+    \midrule
+    PassPerItem & $2.177038 \times 10^8$ & $1.940991 \times 10^6$ \\
+    UntilNoChange & $3.194608 \times 10^8$ & $3.019103 \times 10^6$ \\
+    WhileNeeded & $1.892941 \times 10^8$ & $1.847857 \times 10^6$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+Here, we present the standard deviation of the elapsed time for each algorithm with various types of arrays and different array orders:\\
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{./data/std_order_array_1000.png}
+      \caption{Array dimension = 1000}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{./data/std_order_array_10000.png}
+      \caption{Array dimension = 10000}
+  \end{subfigure}
+  \caption{STD Mean of elapsed time of Array Order between algorithms}
+\end{figure}
+
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.4\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{./data/std_order_array_1000.png}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{./data/std_type_array_1000.png}
-    \end{subfigure}
-    \caption{Array dimension = 1000}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.4\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{./data/std_order_array_10000.png}
+        \caption{Array dimension = 1000}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{./data/std_type_array_10000.png}
+        \caption{Array dimension = 10000}
     \end{subfigure}
-    \caption{Array dimension = 10000}
+    \caption{STD Mean of elapsed time of Array Type between algorithms}
 \end{figure}
+
 
 \subsection{Descriptive Statistics}
 For each group or condition, summarize the set of measured values with a "five-number summary": minimum, first quartile, median, third quartile, and maximum. 
