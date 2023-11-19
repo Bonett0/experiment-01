@@ -1,5 +1,9 @@
 # experiment-01
 
+# Author
+
+Giorgio Bonetto and Raffaele Perri
+
 # Sorting Algorithm Efficiency Experiment
 
 This repository contains a Java program designed to test the efficiency of three sorting algorithms: Bubble Sort with a pass per item, Bubble Sort until no change, and Bubble Sort while needed. The experiment is conducted on various types of arrays, including random, sorted, partially sorted, reverse sorted, arrays with duplicates, arrays without duplicates, and arrays with equal elements.
