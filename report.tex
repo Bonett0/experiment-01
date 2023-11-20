@@ -629,8 +629,15 @@ Here, we present the standard deviation of the elapsed time for each algorithm w
 
 
 \subsection{Limitations and Threats to Validity}
-Acknowledge any faults or limitations your study has, and how seriously these affect your
-results. How could these be remedied in future work?
+The enviroment and conditions for the experiment are expressed and explained in the sections above.
+However, these are not the absolute conditions for the experiment.
+The order of tested algorithms and array types could introduce discrepancies.
+A way to avoid this could be done by using randomization techniques so that each algorithm is tested in random order.
+Furthermore, one potential source of measurement issues arises from the lack of isolation of the testing process. Factors such as uncontrolled background processes or varying system loads during the tests could introduce errors in the measurement of elapsed time. It is important to acknowledge that, at present, the testing process has not been sufficiently isolated, potentially impacting the accuracy and reliability of the measured results. To address this, future iterations of the experiment should aim to minimize external influences on the testing environment, thereby enhancing the internal validity of the measurements.
+
+Also, the experiment covered a range of data types and array characteristics, but the generalizability to all possible combinations is limited.
+Additionally, the machine on which the tests are conducted can influence the results. To address this, the experiment has been repeated multiple times on the same machine, establishing a level of confidence that the results are consistent on that specific hardware configuration. However, it cannot be assumed that replicating the experiment on different machines, particularly those running different operating systems like Windows or Mac, would yield the same results.
+The impact of array dimension on algorithm performance may vary based on specific characteristics. In this case, the experiment considered two array dimensions (1000 and 10000).
 
 \section{Appendix}
 \subsection{Materials}
